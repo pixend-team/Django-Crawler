@@ -1,0 +1,21 @@
+<!-- In your_app/templates/create_dynamic_table.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Dynamic Table</title>
+</head>
+<body>
+    <h1>Create Dynamic Table</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="table_name">Table Name:</label>
+        <input type="text" id="table_name" name="table_name"><br><br>
+        
+        <label for="fields">Fields (JSON format):</label>
+        <textarea id="fields" name="fields" rows="4" cols="50"></textarea><br><br>
+
+        <input type="submit" value="Create Table">
+    </form>
+</body>
+</html>
