@@ -1,15 +1,40 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Scraper</title>
+    <title>Scrape Data</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'scraper.css' %}">
 </head>
 <body>
-    <h1>Scraper Form</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Scrape</button>
-    </form>
+    <div class="container">
+        <h1>Scrape Data</h1>
+        <form method="post" class="scraper-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_url">URL:</label>
+                {{ form.url }}
+            </div>
+            <div class="form-group">
+                <label for="id_keys">Keys:</label>
+                {{ form.keys }}
+            </div>
+            <div class="form-group">
+                <label for="id_xpaths">XPaths:</label>
+                {{ form.xpaths }}
+            </div>
+            <button type="submit" class="btn">Start Scraping</button>
+        </form>
+        <div class="messages">
+            <a href="{% url 'home' %}">
+                <button>Back to Home</button>
+            </a>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message {{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
 </body>
 </html>
