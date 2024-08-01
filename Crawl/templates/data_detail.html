@@ -1,0 +1,14 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Detail</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+</head>
+<body>
+    <h1>Data Detail</h1>
+    <p><strong>Data:</strong></p>
+    <pre>{{ data_instance.data }}</pre>
+    <a href="{% url 'profile' %}">Back to Profile</a>
+</body>
+</html>

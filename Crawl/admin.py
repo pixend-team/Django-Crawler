@@ -6,5 +6,6 @@ from .models import ScrapedData
 @admin.register(ScrapedData)
 class Crawl_resultAdmin(admin.ModelAdmin):
     '''Admin View for Crawl_result'''
+    fields = ['data', 'user']
 
     list_display = ('pk',)

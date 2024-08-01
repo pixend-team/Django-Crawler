@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'profile.css' %}">
+</head>
+<body>
+    <h1>Your Scraped Data</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    <table class="grid">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody class="grid">
+            {% for data in scraped_data %}
+                <div >
+                    <tr>
+                        <td>
+                            {{ data.data }}{% if data.data|length > 200 %}...{% endif %}
+                        </td>
+                        <td>
+                        <div class="biu">
+                            <div>
+                                <a href="{% url 'data-detail' data.id %}">
+                                <button type="submit"> Detail</button>
+                                </a>
+                            </div>
+                            <form method="post" action="{% url 'profile' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="data_id" value="{{ data.id }}">
+                                <button type="submit">Delete</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                </div>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="biu">
+        <a href="{% url 'download-csv' %}">
+            <button>Download Csv</button>
+        </a>
+        <a href="{% url 'download-json' %}">
+            <button>Get JSON</button>
+        </a>
+    </div>
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>
