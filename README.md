@@ -32,6 +32,7 @@ pip install -r requirements.txt
 
 4. Apply migrations to create a database and create a superuser:
 ```sh
+python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser
 ```
