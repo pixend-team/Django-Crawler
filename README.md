@@ -47,28 +47,28 @@ PROJECT
 
 ## Installation
 1. Clone the repository:
-    ```sh
-    git clone https://github.com/pixend-team/Django-Crawler.git
-    cd Django-Crawler
-    ```
+```sh
+git clone https://github.com/pixend-team/Django-Crawler.git
+cd Django-Crawler
+```
 2. Install the Required Packages:
-  ```sh
-  pip install -r requirements.txt
-  ```
+```sh
+pip install -r requirements.txt
+```
 
 4. Apply migrations to create a database and create a superuser:
-    ```sh
-    python manage.py migrate
-    python manage.py createsuperuser
-    ```
+```sh
+python manage.py migrate
+python manage.py createsuperuser
+```
 
 ## Usage
 
 ### Running the Application
 1. Run the Server
-    ```sh
-    python manage.py runserver
-    ```
+```sh
+python manage.py runserver
+```
 
 2. The application will be accessible at `http://localhost:8000`.
 
