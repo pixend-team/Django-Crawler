@@ -6,7 +6,7 @@ This Django application allows users to dynamically scrape web pages using speci
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-  - [Run the Server](#run-the-server)
+  - [Running the Application](#running-the-application)
   - [Using the Application](#using-the-application)
 - [Screenshots](#screenshots)
 - [Contributing](#contributing)
