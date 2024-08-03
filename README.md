@@ -4,7 +4,6 @@ This Django application allows users to dynamically scrape web pages using speci
 
 ## Table of Contents
 - [Features](#features)
-- [Project Structure](#project-structure)
 - [Installation](#installation)
 - [Usage](#usage)
   - [Run the Server](#run-the-server)
@@ -18,31 +17,6 @@ This Django application allows users to dynamically scrape web pages using speci
 - Save scraped data to the database
 - View, download, and delete scraped data
 - User authentication and management
-
-## Project Structure
-PROJECT
-├── Crawl
-│ ├── admin.py
-│ ├── apps.py
-│ ├── forms.py
-│ ├── init.py
-│ ├── migrations
-│ ├── models.py
-│ ├── scrapy_spider.py
-│ ├── serializers.py
-│ ├── static
-│ ├── templates
-│ ├── tests.py
-│ └── views.py
-├── django_scrapy
-│ ├── asgi.py
-│ ├── init.py
-│ ├── settings.py
-│ ├── urls.py
-│ └── wsgi.py
-├── manage.py
-└── requirements.txt
-
 
 
 ## Installation
