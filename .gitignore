@@ -1,2 +1,9 @@
 \__pycache__
 \old-project
+\nginx
+\.vscode
+\mycrawler
+.docker**
+docker**
+Docker**
+entrypoint.sh
