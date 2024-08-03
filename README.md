@@ -56,9 +56,10 @@ python manage.py runserver
 6. **Delete Data**: Delete any scraped data you no longer need.
 
 ## Screenshots
-- **Home Page**: ![Home Page](path/to/homepage/screenshot.png)
-- **Scraper Page**: ![Scraper Page](path/to/scraperpage/screenshot.png)
-- **Profile Page**: ![Profile Page](path/to/profilepage/screenshot.png)
+- **Home Page**: ![Screenshot from 2024-08-03 16-44-01](https://github.com/user-attachments/assets/4014dee3-6fab-4679-9057-60f70236f35f)
+- **Scraper Page**: ![Screenshot from 2024-08-03 16-49-52](https://github.com/user-attachments/assets/f95784d4-e702-49b6-94ed-6cf7208e7b12)
+- **Profile Page**: ![Screenshot from 2024-08-03 16-50-01](https://github.com/user-attachments/assets/1b9033e4-56eb-4b04-af9b-a10e82cec568)
+
 
 ## Contributing
 1. Fork the repository.
