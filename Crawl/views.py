@@ -15,8 +15,7 @@ from django.utils.decorators import method_decorator
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from .forms import SignUpForm, LoginForm, CrawlForm, ChangePasswordForm
 from django.contrib import messages
-
-
+from celery import shared_task
 
 
 
@@ -25,7 +24,6 @@ class SignUpView(APIView):
     def get(self, request):
         form = SignUpForm()
         return render(request, 'signup.html', {'form': form})
-
 
     def post(self, request):
         form = SignUpForm(request.POST)
@@ -40,13 +38,14 @@ class SignUpView(APIView):
             else:
                 messages.error(request, serializer_class.errors)
         return render(request, 'signup.html', {'form': form})
-    
-    
+
+
 class LoginView(APIView):
     permission_classes = [AllowAny]
     def get(self, request):
         form = LoginForm()
         return render(request, 'login.html', {'form': form})
+
 
     def post(self, request):
         form = LoginForm(request.POST)
@@ -64,6 +63,8 @@ class LoginView(APIView):
             messages.error(request, 'Invalid credentials')
         return render(request, 'login.html', {'form': form})
 
+
+
 class LogoutView(APIView):
     @method_decorator(login_required)
     def get(self, request): 
@@ -76,7 +77,7 @@ class ScraperAPIView(APIView):
     def get(self, request):
         form = CrawlForm()
         return render(request, 'scraper.html', {'form': form})
-    
+    @shared_task
     def post(self, request, *args, **kwargs):
         form = CrawlForm(data=request.POST)
         if form.is_valid():

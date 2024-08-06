@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "Crawl",
     'rest_framework',
-    
 ]
 
 MIDDLEWARE = [
@@ -143,3 +142,6 @@ REST_FRAMEWORK ={
             'rest_framework.permissions.IsAuthenticated',
         ],
 }
+
+
+CELERY_BROKER_URL = 'pyamqp://0.0.0.0:5672'
