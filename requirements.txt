@@ -8,7 +8,6 @@ constantly==23.10.4
 cssselect==1.2.0
 defusedxml==0.7.1
 Django
-django-jsonfield==1.4.1
 djangorestframework==3.15.2
 filelock==3.15.4
 hyperlink==21.0.0
