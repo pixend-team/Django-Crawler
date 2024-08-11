@@ -80,9 +80,6 @@ class ScraperAPIView(APIView):
     def post(self, request, *args, **kwargs):
         form = CrawlForm(data=request.POST)
         if form.is_valid():
-            print(form.cleaned_data['url'], "\n---------\n")
-            print(form.cleaned_data['keys'].split(','), "\n---------\n")
-            print(form.cleaned_data['xpaths'].split(','), "\n---------\n")
             url = form.cleaned_data['url']
             keys = form.cleaned_data['keys'].split(',')
             xpaths = form.cleaned_data['xpaths'].split(',')
