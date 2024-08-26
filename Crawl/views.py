@@ -15,7 +15,8 @@ from django.utils.decorators import method_decorator
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from .forms import SignUpForm, LoginForm, CrawlForm, ChangePasswordForm
 from django.contrib import messages
-from celery import shared_task
+
+
 
 
 
@@ -33,7 +34,8 @@ class SignUpView(APIView):
                 serializer_class.save()
                 messages.success(request, 'User created successfully')
                 user = authenticate(request, username=form.cleaned_data.get('username'), password=form.cleaned_data.get('password'))
-                login(request, user)
+                login(request=request, user=user)
+                # send_welcome_email(user_id=user.pk)
                 return redirect('home')
             else:
                 messages.error(request, serializer_class.errors)
@@ -81,9 +83,6 @@ class ScraperAPIView(APIView):
     def post(self, request, *args, **kwargs):
         form = CrawlForm(data=request.POST)
         if form.is_valid():
-            print(form.cleaned_data['url'], "\n---------\n")
-            print(form.cleaned_data['keys'].split(','), "\n---------\n")
-            print(form.cleaned_data['xpaths'].split(','), "\n---------\n")
             url = form.cleaned_data['url']
             keys = form.cleaned_data['keys'].split(',')
             xpaths = form.cleaned_data['xpaths'].split(',')
@@ -95,8 +94,7 @@ class ScraperAPIView(APIView):
                 return redirect('scraper-api')
             except Exception as e:
                 messages.error(request, f'An error occurred: {str(e)}')
-                return redirect('scraper-api')  
-        
+                return redirect('scraper-api')
         return render(request, 'scraper.html', {'form': form})
 
 

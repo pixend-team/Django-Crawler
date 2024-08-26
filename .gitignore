@@ -3,9 +3,6 @@
 \nginx
 \.vscode
 \mycrawler
-.docker**
-docker**
-Docker**
-entrypoint.sh
+\staticfiles
 db.sqlite3
 .env
