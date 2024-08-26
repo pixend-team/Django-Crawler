@@ -15,7 +15,7 @@ from django.utils.decorators import method_decorator
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from .forms import SignUpForm, LoginForm, CrawlForm, ChangePasswordForm
 from django.contrib import messages
-
+from celery import shared_task
 
 
 
