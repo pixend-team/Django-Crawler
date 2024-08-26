@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path, include
 from Crawl.views import ScraperAPIView, ScrapedDataListAPIView, download_csv, download_json, home, SignUpView, LoginView, LogoutView, profile_view, data_detail_view, change_password_view
 
@@ -16,3 +18,5 @@ urlpatterns = [
     path('download-csv/', download_csv, name='download-csv'),  
     path('download-json', download_json, name='download-json'),
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

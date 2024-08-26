@@ -17,15 +17,11 @@ from .forms import SignUpForm, LoginForm, CrawlForm, ChangePasswordForm
 from django.contrib import messages
 
 
-
-
-
 class SignUpView(APIView):
     permission_classes = [AllowAny]
     def get(self, request):
         form = SignUpForm()
         return render(request, 'signup.html', {'form': form})
-
 
     def post(self, request):
         form = SignUpForm(request.POST)
@@ -35,13 +31,13 @@ class SignUpView(APIView):
                 serializer_class.save()
                 messages.success(request, 'User created successfully')
                 user = authenticate(request, username=form.cleaned_data.get('username'), password=form.cleaned_data.get('password'))
-                login(request, user)
+                login(request=request, user=user)
+                # send_welcome_email(user_id=user.pk)
                 return redirect('home')
             else:
                 messages.error(request, serializer_class.errors)
         return render(request, 'signup.html', {'form': form})
-    
-    
+
 class LoginView(APIView):
     permission_classes = [AllowAny]
     def get(self, request):
@@ -91,8 +87,7 @@ class ScraperAPIView(APIView):
                 return redirect('scraper-api')
             except Exception as e:
                 messages.error(request, f'An error occurred: {str(e)}')
-                return redirect('scraper-api')  
-        
+                return redirect('scraper-api')
         return render(request, 'scraper.html', {'form': form})
 
 
