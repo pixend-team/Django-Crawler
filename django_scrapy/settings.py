@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+from django.conf import settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +41,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "Crawl",
     'rest_framework',
+    # 'django_celery_beat',
+    
     
 ]
 
@@ -128,7 +132,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = "static/"
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -143,3 +153,23 @@ REST_FRAMEWORK ={
             'rest_framework.permissions.IsAuthenticated',
         ],
 }
+
+# # For django-celery-beat
+# CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+# # settings.py
+
+# CELERY_BROKER_URL = 'redis://redis:6379/0'  # or 'redis://redis:6379/0' if using Docker
+# CELERY_RESULT_BACKEND = 'redis://redis:6379/0'  # or 'redis://redis:6379/0' if using Docker
+
+
+
+# #Emails:
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.mailersend.net'  # Replace with your SMTP server
+# EMAIL_PORT = 587  # or 465 for SSL
+# EMAIL_USE_TLS = True  # or False if using SSL
+# EMAIL_USE_SSL = False  # or True if using SSL
+# EMAIL_HOST_USER = 'MS_431MMy@trial-pr9084zz65e4w63d.mlsender.net'
+# EMAIL_HOST_PASSWORD = 'EEYR0tTmbeRE1vlF'
