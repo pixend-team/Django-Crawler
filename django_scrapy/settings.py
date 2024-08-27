@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "Crawl",
     'rest_framework',
+    "django_celery_beat"
     
 ]
 
